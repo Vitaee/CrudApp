@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var properties = require('./config/properties');
 var db = require('./config/database');
 var herosRoutes = require('./api/heros/heros.routes');
+//var userRoutes = require('./api/userauth/routes/user.routes');
+//var authRoutes = require('./api/userauth/routes/auth.routes');
 var bodyParserJSON = bodyParser.json();
 var bodyParserURLEncoded = bodyParser.urlencoded({extended:true});
 var router = express.Router();
@@ -27,7 +29,12 @@ app.use(function (req,res,next){
 })
 
 // Use express router
+
+require('./api/userauth/routes/auth.routes')(app);
+require('./api/userauth/routes/user.routes')(app);
 app.use('/api',router);
+
+
 //call heros routing
 herosRoutes(router);
 
