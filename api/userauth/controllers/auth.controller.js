@@ -5,7 +5,6 @@ const User = require("../models/user.dao");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
-
 exports.signup = function (req, res, next) {
     var user = {
         username: req.body.username,
@@ -65,3 +64,5 @@ exports.signin = (req, res) => {
       });
     });
 };
+
+
