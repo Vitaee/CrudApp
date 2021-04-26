@@ -1,18 +1,18 @@
 const config = require("../../../config/properties");
 
-const User = require("../models/user.dao");
+const User = require("../models/user.model");
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = function (req, res, next) {
-    var user = {
+    let user = {
         username: req.body.username,
         email: req.body.email,
         password:bcrypt.hashSync(req.body.password, 8)
     };
 
-    User.create(user, function(err, hero) {
+    User.create(user, function(err) {
         if(err) {
             res.json({
                 error : err
@@ -26,6 +26,7 @@ exports.signup = function (req, res, next) {
 
 
 exports.signin = (req, res) => {
+    console.log(req.body)
   User.findOne({
     username: req.body.username
   })
@@ -60,8 +61,9 @@ exports.signin = (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
-        accessToken: token
+       accessToken: token
       });
+
     });
 };
 

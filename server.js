@@ -5,8 +5,6 @@ var bodyParser = require('body-parser');
 var properties = require('./config/properties');
 var db = require('./config/database');
 var herosRoutes = require('./api/heros/heros.routes');
-//var userRoutes = require('./api/userauth/routes/user.routes');
-//var authRoutes = require('./api/userauth/routes/auth.routes');
 var bodyParserJSON = bodyParser.json();
 var bodyParserURLEncoded = bodyParser.urlencoded({extended:true});
 var router = express.Router();
@@ -14,10 +12,11 @@ var router = express.Router();
 var app = express();
 // call the database connectivity function
 db();
-
 app.use(log);
 app.use(bodyParserJSON);
-app.use(bodyParserURLEncoded);
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Error handling
 app.use(function (req,res,next){
@@ -28,10 +27,13 @@ app.use(function (req,res,next){
    next();
 })
 
-// Use express router
+
 
 require('./api/userauth/routes/auth.routes')(app);
 require('./api/userauth/routes/user.routes')(app);
+app.get('/all',(req,res) => {
+     res.status(200).send("Public Content.");
+})
 app.use('/api',router);
 
 

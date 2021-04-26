@@ -1,8 +1,7 @@
 const db = require("../../../config/database");
-const User = require("../models/user.dao");
+const User = require("../models/user.model");
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-  // Username
   User.findOne({
     username: req.body.username
   }).exec((err, user) => {
