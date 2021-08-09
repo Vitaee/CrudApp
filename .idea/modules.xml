@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CrudExpress.iml" filepath="$PROJECT_DIR$/.idea/CrudExpress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CrudApp.iml" filepath="$PROJECT_DIR$/.idea/CrudApp.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //require chalk module to give colors to console text
-var chalk = require('chalk');
+const chalk = require('chalk');
 
 //require database URL from properties file
 var dbURL = require('./properties').DB;
