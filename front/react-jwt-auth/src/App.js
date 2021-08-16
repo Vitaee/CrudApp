@@ -8,7 +8,6 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import BoardUser from "./components/board-user.component";
 import NameForm from "./components/add-post.component";
 class App extends Component {
   constructor(props) {
@@ -51,13 +50,7 @@ class App extends Component {
               </Link>
             </li>
 
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
+
             <li className="nav-item">
                 <Link to={"/addpost"} className="nav-link">
                   Add Post
@@ -102,7 +95,6 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/addpost" component={NameForm} />
-            <Route path="/user" component={BoardUser} />
           </Switch>
         </div>
       </div>

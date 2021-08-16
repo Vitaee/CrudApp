@@ -43,12 +43,14 @@ export default class Login extends Component {
     });
   }
 
+
   handleAddingPost(e) {
     e.preventDefault();
 
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
+      console.log(this.state.img)
       AddPost.addpost(this.state.title, this.state.content, this.state.currentUser.username).then(
         () => {
           this.props.history.push("/home");
@@ -93,6 +95,7 @@ export default class Login extends Component {
             ref={c => {
               this.form = c;
             }}
+
           >
             <div className="form-group">
               <label htmlFor="title">Title</label>
@@ -116,6 +119,11 @@ export default class Login extends Component {
 
               />
             </div>
+            <div className="form-group">
+                            <input type="file"
+                            />
+                        </div>
+
 
             <div className="form-group">
               <button

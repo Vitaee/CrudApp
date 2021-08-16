@@ -5,23 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a279bf9-cd8d-4d8c-b9ba-b590bf53299e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/CrudApp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/posts/controllers/post.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/posts/models/post.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/posts/routes/post.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/components/add-post.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/services/user-post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CrudExpress.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/react-jwt-auth/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/posts/controllers/post.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/posts/controllers/post.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/posts/models/post.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/posts/models/post.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/posts/routes/post.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/posts/routes/post.routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/src/components/add-post.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/components/add-post.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/src/components/board-user.component.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/src/components/home.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/components/home.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/src/services/auth-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/services/auth-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/react-jwt-auth/src/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/react-jwt-auth/src/services/user-service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
@@ -40,6 +32,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1wTuJFmkLcRTbG2o2PdFHeeBDX2" />
   <component name="ProjectLevelVcsManager">
@@ -80,6 +80,8 @@
       <workItem from="1628494831141" duration="2592000" />
       <workItem from="1628497590891" duration="3027000" />
       <workItem from="1628504680364" duration="6007000" />
+      <workItem from="1629104309480" duration="1084000" />
+      <workItem from="1629111854987" duration="9218000" />
     </task>
     <servers />
   </component>

@@ -6,7 +6,7 @@ export default class Home extends Component {
     super(props);
 
     this.state = {
-      content: ""
+      content: []
     };
   }
 
@@ -28,13 +28,29 @@ export default class Home extends Component {
     );
   }
 
+
   render() {
     return (
       <div className="container">
+        {this.state.content.map((item) => (
         <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-        </header>
+          <div className="row justify-content-between">
+            <h3>{item.title}</h3>
+            <h3 className="float-right">Created By: {item.createdBy}</h3>
 
+
+          </div>
+           <hr />
+
+
+          <h3>Content of Post</h3>
+          <br />
+          <h4>{item.content}</h4>
+          <br />
+          <b className="float-right">{item.createdAt.split("T")[0]}</b>
+
+        </header>
+        ))}
       </div>
     );
   }

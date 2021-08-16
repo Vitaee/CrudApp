@@ -9,6 +9,7 @@ var Post = new Schema({
         required:true
     },
     content: String,
+    img: String,
     createdBy: String,
   },{timestamps:true});
 
