@@ -2,21 +2,20 @@ const express = require('express');
 const log = require('morgan')('dev');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const properties = require('./config/properties');
+const db = require('./config/database');
+const herosRoutes = require('./api/heros/heros.routes');
+const postRoutes = require('./api/posts/postImage')
 
-
-
-var properties = require('./config/properties');
-var db = require('./config/database');
-var herosRoutes = require('./api/heros/heros.routes');
-var router = express.Router();
-
-var app = express();
+const router = express.Router();
+const app = express();
 db();
 
 app.use(log);
-app.use(cors());
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 app.use('/public', express.static('public'));
 
 
@@ -29,7 +28,7 @@ require('./api/userauth/routes/user.routes')(app);
 require('./api/posts/routes/post.routes')(app);
 
 app.use('/api',router);
-
+app.use('/', postRoutes)
 
 //call heros routing
 herosRoutes(router);

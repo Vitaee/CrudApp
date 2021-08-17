@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-toastify": "^7.0.4",
+    "reactstrap": "^8.9.0"
   }
 }

@@ -4,11 +4,18 @@ const API_URL = "http://localhost:4000/";
 
 class AddPost{
 
-    addpost(title, content,createdBy){
-        return axios.post(API_URL + "create-post", {
+    addpost(title,content, createdBy, img){
+        console.log(title)
+        console.log()
+        console.log(img)
+        console.log()
+        var name = img.name
+
+        return axios.post(API_URL + "post", {
             title,
             content,
-            createdBy
+            createdBy,
+            img
         })
             .then(response => {
                 return response.data;
