@@ -111,19 +111,19 @@ return true;
   handleAddingPost(e) {
     e.preventDefault();
 
-    this.form.validateAll();
-    const data = new FormData()
-    for(var x = 0; x<this.state.selectedFile.length; x++) {
-      data.append('file', this.state.selectedFile[x])
-    }
+    //this.form.validateAll();
+    const data = new FormData(e.target)
 
     if (this.checkBtn.context._errors.length === 0) {
+        console.log(this.state.selectedFile[0])
+        console.log(data.get("img"))
 
 
-      AddPost.addpost(this.state.title, this.state.content, this.state.currentUser.username,data).then(
+      AddPost.addpost(this.state.title, this.state.content, this.state.currentUser.username,data.get("img")).then(
         () => {
-          this.props.history.push("/home");
-          window.location.reload();
+
+            this.props.history.push("/home");
+            window.location.reload();
         },
         error => {
           const resMessage =
@@ -160,13 +160,11 @@ return true;
 
 
           <Form
+              encType="multipart/form-data"
             onSubmit={this.handleAddingPost}
             ref={c => {
               this.form = c;
-            }}
-
-
-          >
+            }}>
             <div className="form-group">
               <label htmlFor="title">Title</label>
               <Input
@@ -190,15 +188,14 @@ return true;
               />
             </div>
             <div className="form-group">
-              <input type="file" className="form-control" multiple onChange={this.onFileChange}/>
+              <input type="file" id="file" name='img' className="form-control" multiple onChange={this.onFileChange}/>
             </div>
 
 
             <div className="form-group">
               <button
                 className="btn btn-primary btn-block"
-                disabled={this.state.loading}
-              >
+                disabled={this.state.loading}>
                 {this.state.loading && (
                   <span className="spinner-border spinner-border-sm"></span>
                 )}
