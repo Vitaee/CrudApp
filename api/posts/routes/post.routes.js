@@ -1,5 +1,5 @@
-const contreller = require('../controllers/post.controller');
+import { getPosts } from '../controllers/post.controller';
 
-module.exports = function (app) {
-    app.get("/posts",contreller.getPosts)
+export default function (app) {
+    app.get("/posts",getPosts)
 }

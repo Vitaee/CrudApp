@@ -1,6 +1,6 @@
-var Heros = require('./heros.controller');
+import * as Heros from "./heros.controller.js"
 
-module.exports = function(router) {
+export const herosRoutes = function(router) {
     router.post('/create', Heros.createHero);
     router.get('/get', Heros.getHeros);
     router.get('/get/:name', Heros.getHero);

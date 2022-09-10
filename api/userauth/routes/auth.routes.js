@@ -1,16 +1,6 @@
-const { verifySignUp } = require("../middlewares");
-const controller = require("../controllers/auth.controller");
+import { signup, signin } from "../controllers/auth.controller.js"
 
-module.exports = function(app) {
-  app.use(function(req, res, next) {
-    res.header(
-      "x-access-token"
-    );
-    next();
-  });
-
-  app.post("/auth/signup", [verifySignUp.checkDuplicateUsernameOrEmail], controller.signup);
-
-  app.post("/auth/signin", controller.signin);
-
-};
+export const authRoutes = function(router) {
+  router.post("/auth/signup", signup);
+  router.get('/auth/signin"', signin);
+}

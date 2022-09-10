@@ -1,7 +1,7 @@
-const db = require("../../../config/database");
-const User = require("../models/user.model");
+import { db } from "../../../config/database.js";
+import { userModel } from "../models/user.model.js";
 
-checkDuplicateUsernameOrEmail = (req, res, next) => {
+const checkDuplicateUsernameOrEmail = (req, res, next) => {
   User.findOne({
     username: req.body.username
   }).exec((err, user) => {
@@ -36,8 +36,6 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 
 
 
-const verifySignUp = {
+export const verifySignUp = {
   checkDuplicateUsernameOrEmail,
 };
-
-module.exports = verifySignUp;

@@ -1,6 +1,6 @@
-const { authJwt } = require("../middlewares");
-const controller = require("../controllers/user.controller");
-module.exports = function(app) {
+import { authJwt } from "../middlewares";
+import { userBoard, forgetPassword } from "../controllers/user.controller";
+export default function(app) {
   app.use(function(req, res, next) {
     res.header(
       "x-access-token"
@@ -9,7 +9,7 @@ module.exports = function(app) {
   });
 
 
-  app.get("/user", [authJwt.verifyToken], controller.userBoard);
-  app.post("/forgetPass",[authJwt.verifyToken], controller.forgetPassword);
+  app.get("/user", [authJwt.verifyToken], userBoard);
+  app.post("/forgetPass",[authJwt.verifyToken], forgetPassword);
 
 };

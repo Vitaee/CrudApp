@@ -1,6 +1,6 @@
-var Heros = require('./heros.dao');
+import * as Heros from "./heros.dao.js"
 
-exports.createHero = function (req, res, next) {
+export const createHero = function (req, res, next) {
     var hero = {
         name: req.body.name,
         description: req.body.description
@@ -18,7 +18,7 @@ exports.createHero = function (req, res, next) {
     })
 }
 
-exports.getHeros = function(req, res, next) {
+export const getHeros = function(req, res, next) {
     Heros.get({}, function(err, heros) {
         if(err) {
             res.json({
@@ -31,7 +31,7 @@ exports.getHeros = function(req, res, next) {
     })
 }
 
-exports.getHero = function(req, res, next) {
+export const getHero = function(req, res, next) {
     Heros.get({name: req.params.name}, function(err, heros) {
         if(err) {
             res.json({
@@ -44,7 +44,7 @@ exports.getHero = function(req, res, next) {
     })
 }
 
-exports.updateHero = function(req, res, next) {
+export const updateHero = function(req, res, next) {
     var hero = {
         name: req.body.name,
         description: req.body.description
@@ -62,7 +62,7 @@ exports.updateHero = function(req, res, next) {
     })
 }
 
-exports.removeHero = function(req, res, next) {
+export const removeHero = function(req, res, next) {
     Heros.delete({_id: req.params.id}, function(err, hero) {
         if(err) {
             res.json({

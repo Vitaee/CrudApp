@@ -1,33 +1,40 @@
-const config = require("../../../config/properties");
+import { secret } from "../../../config/properties.js";
 
-const User = require("../models/user.model");
+import { userModel } from "../models/user.model.js";
 
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
+import jsonwebtoken from "jsonwebtoken";
+import bcryptjs from "bcryptjs";
 
-exports.signup = function (req, res, next) {
+export function signup (req, res, next) {
     let user = {
         username: req.body.username,
         email: req.body.email,
-        password:bcrypt.hashSync(req.body.password, 8)
+        password:bcryptjs.hashSync(req.body.password, 8)
     };
 
-    User.create(user, function(err) {
+    userModel.create(user, function(err) {
         if(err) {
             res.json({
                 error : err
             })
         }
-        res.json({
-            message : "User created successfully"
-        })
+
+        var token = jsonwebtoken.sign({ id: user.id }, secret, {
+          expiresIn: 86400 // 24 hours
+        });
+  
+  
+        res.status(200).send({
+          message: "Success",
+         accessToken: token
+        });
     })
 }
 
 
-exports.signin = (req, res) => {
+export function signin(req, res) {
     console.log(req.body)
-  User.findOne({
+    userModel.findOne({
     username: req.body.username
   })
     .exec((err, user) => {
@@ -40,7 +47,7 @@ exports.signin = (req, res) => {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      var passwordIsValid = bcrypt.compareSync(
+      var passwordIsValid = bcryptjs.compareSync(
         req.body.password,
         user.password
       );
@@ -52,7 +59,7 @@ exports.signin = (req, res) => {
         });
       }
 
-      var token = jwt.sign({ id: user.id }, config.secret, {
+      var token = jsonwebtoken.sign({ id: user.id }, secret, {
         expiresIn: 86400 // 24 hours
       });
 
@@ -65,6 +72,6 @@ exports.signin = (req, res) => {
       });
 
     });
-};
+}
 
 

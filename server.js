@@ -1,27 +1,29 @@
-const express = require('express');
-const log = require('morgan')('dev');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const properties = require('./config/properties');
-const db = require('./config/database');
-const herosRoutes = require('./api/heros/heros.routes');
+import express from 'express';
+import morgan from "morgan";
+import cors from 'cors';
+import * as config from './config/properties.js';
+import { db } from './config/database.js';
+import { herosRoutes }  from './api/heros/heros.routes.js';
+import { authRoutes } from './api/userauth/routes/auth.routes.js';
 //const postRoutes = require('./api/posts/postImage')
-const multer = require('multer');
+import multer, { diskStorage, MulterError } from 'multer';
+
+
 const router = express.Router();
 const app = express();
-const fileUpload = require('express-fileupload');
+import fileUpload from 'express-fileupload';
 db();
 
-app.use(log);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(cors({ origin:true, credentials: true }));
 //app.use('/public', express.static('public'));
 
 
 
-var storage = multer.diskStorage({
+var storage = diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'public')
     },
@@ -39,7 +41,7 @@ app.post('/post',function(req, res) {
 
     upload(req, res, function (err) {
 
-        if (err instanceof multer.MulterError) {
+        if (err instanceof MulterError) {
             return res.status(500).json(err)
           // A Multer error occurred when uploading.
         } else if (err) {
@@ -57,16 +59,17 @@ app.post('/post',function(req, res) {
 
 
 
-require('./api/userauth/routes/auth.routes')(app);
-require('./api/userauth/routes/user.routes')(app);
-require('./api/posts/routes/post.routes')(app);
+
+//require('./api/userauth/routes/user.routes').default(app);
+//require('./api/posts/routes/post.routes').default(app);
 
 app.use('/api',router);
 
-//call heros routing
+//call other routes
 herosRoutes(router);
+authRoutes(router);
 
 
-app.listen(properties.PORT, (req, res) => {
-    console.log(`Server is running on ${properties.PORT} port.`);
+app.listen(config.PORT, (req, res) => {
+    console.log(`Server is running on ${config.PORT} port.`);
 })

@@ -1,5 +1,6 @@
-var mongoose = require('mongoose');
-var herosSchema = require('./heros.model');
+
+import * as mongoose from "mongoose";
+import herosSchema from "./heros.model.js"
 
 herosSchema.statics = {
     create : function(data, cb) {
@@ -25,4 +26,4 @@ herosSchema.statics = {
 }
 
 var herosModel = mongoose.model('Heros', herosSchema);
-module.exports = herosModel;
+export const herosMOdel = herosModel;

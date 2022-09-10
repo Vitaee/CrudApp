@@ -1,4 +1,4 @@
-const User = require("../models/user.model");
+const User = require("../models/user.model").default;
 const bcrypt = require("bcryptjs");
 exports.userBoard = async (req, res) => {
   //const userData = await User.findOne({username:req.body.username})

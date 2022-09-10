@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+import * as mongoose from "mongoose"
+
 var Schema = mongoose.Schema;
 var herosSchema = new Schema({
     name :{
@@ -15,4 +16,4 @@ var herosSchema = new Schema({
     timestamps: true
 });
 
-module.exports = herosSchema;
+export default herosSchema;
