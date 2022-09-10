@@ -1,7 +1,4 @@
-const authJwt = require("./authJwt");
-const verifySignUp = require("./verifySignUp").default;
-
-module.exports = {
-  authJwt,
-  verifySignUp
-};
+import { checkRole } from "./checkRoles.js";
+import { verifyToken } from "./authJwt.js";
+export  const verifyUserToken = verifyToken;
+export const checkRoles = checkRole

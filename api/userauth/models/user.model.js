@@ -1,15 +1,19 @@
-import { Schema as _Schema, model } from "mongoose";
-var Schema = _Schema;
+import { Schema, model } from "mongoose";
 
 
 var User = new Schema({
     username: {
         type:String,
-        unique:false,
-        required:true
+        unique:true,
+        required:true,
     },
     email: { type: String, unique: true },
     password: String,
+    roles: {
+        type: [String],
+        default: ["user"]
+    },
+
   },{timestamps:true});
 
 

@@ -1,34 +1,32 @@
 import { secret } from "../../../config/properties.js";
-
 import { userModel } from "../models/user.model.js";
-
-import jsonwebtoken from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
 
-export function signup (req, res, next) {
+export async function signup (req, res, next) {
     let user = {
         username: req.body.username,
         email: req.body.email,
         password:bcryptjs.hashSync(req.body.password, 8)
     };
 
-    userModel.create(user, function(err) {
+    userModel.create(user, function(err, createdUser) {
         if(err) {
             res.json({
                 error : err
-            })
+            })  
+          return;
         }
-
-        var token = jsonwebtoken.sign({ id: user.id }, secret, {
+        
+        var token = jwt.sign({ id: createdUser._id.toString() }, secret, {
           expiresIn: 86400 // 24 hours
         });
-  
-  
+
         res.status(200).send({
           message: "Success",
          accessToken: token
         });
-    })
+    });
 }
 
 
@@ -36,7 +34,7 @@ export function signin(req, res) {
     console.log(req.body)
     userModel.findOne({
     username: req.body.username
-  })
+    })
     .exec((err, user) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -74,4 +72,7 @@ export function signin(req, res) {
     });
 }
 
-
+export const allUsers = async (req, res) => {
+  const allUsers = await userModel.find();
+  return res.status(200).send(allUsers)
+}

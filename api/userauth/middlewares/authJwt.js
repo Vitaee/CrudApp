@@ -1,15 +1,14 @@
-const jwt = require("jsonwebtoken");
-const config = require("../../../config/properties");
+import jwt from "jsonwebtoken";
+import { secret } from "../../../config/properties.js";
 
-verifyToken = (req, res, next) => {
+export const verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
-  console.log(token);
 
   if (!token) {
     return res.status(403).send({ message: "No token provided!" });
   }
 
-  jwt.verify(token, config.secret, (err, decoded) => {
+  jwt.verify(token.replace('Bearer ', ''), secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({ message: "Unauthorized!" });
     }
@@ -17,10 +16,3 @@ verifyToken = (req, res, next) => {
     next();
   });
 };
-
-
-
-const authJwt = {
-  verifyToken
-};
-module.exports = authJwt;
